@@ -1,0 +1,11 @@
+*.db
+*.sqlite3
+.bundle/*
+log/*
+*.swp
+*.swo
+.sass-cache/
+*~
+public/rack*
+public/app.min.js
+capybara*
