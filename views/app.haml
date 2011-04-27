@@ -4,7 +4,8 @@
     // the title is empty as it's setted by the js application
     %title
   
+    %link{:rel => "/mobi/resources/css/sencha-touch.css"}
+    %script{:src => "/mobi/resources/sencha-touch-debug.js"}
   %body
-    #hello Hello world!
-    :javascript
-      document.getElementById('hello').innerHTML='Hello world with javascript!'
+    %script{:src => "/mobi/app/app.js"}
+    %script{:src => "/mobi/app/views/Viewport.js"}
