@@ -6,6 +6,10 @@ gem 'compass', '>= 0.11.beta.4'
 gem 'rake-minify'
 gem 'tux'
 
+group :development do
+  gem 'shotgun'
+end
+
 group :test do
   gem 'cucumber'
   gem 'capybara'
