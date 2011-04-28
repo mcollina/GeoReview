@@ -8,6 +8,12 @@ GeoReview.views.AboutPanel = Ext.extend(Ext.Panel, {
   // 'info' is just a stock icon inside Sencha Touch
   iconCls: 'info',
 
-  html: 'Hello world with javascript!',
+  // inline CSS
+  style: 'text-align: center;',
+
+  // or define a CSS class
+  // cls: 'myclass',
+
+  html: '<img src="/mobi/resources/images/mavigex.png" /> <div class="box-about">Mavigex Srl <br /><br />Matteo: .... <br />Daniele: .... </div>',
 
 });
