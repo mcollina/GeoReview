@@ -10,8 +10,8 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
   // default animation for the card switch
   cardSwitchAnimation: 'slide',
 
+  // this is the toolbar at the top
   dockedItems: [
-    // this is the toolbar at the top
     {
     xtype: 'toolbar',
     title: 'GeoReview',
@@ -29,8 +29,8 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
 
     // create the main two panels
     var views = new Object();
+    views.about = new GeoReview.views.AboutPanel();
     //views.map = new GeoReview.views.MapPanel();
-    //views.about = new GeoReview.views.AboutPanel();
 
     // Adds to GeoReview.views the just created 
     // panels
@@ -38,8 +38,7 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
 
     var items = new Array();
     //items.push(GeoReview.views.map);
-    //items.push(GeoReview.views.about);
-    items.push(new Ext.Panel({ html: "Hello world with javascript!", layout: "fit" }));
+    items.push(GeoReview.views.about);
 
     // Adds to the current panel's items 
     // the just created panels
