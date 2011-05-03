@@ -19,11 +19,13 @@ GeoReview.views.MapContainerPanel = Ext.extend(Ext.Panel, {
     // create the main two panels
     var views = new Object();
     views.map = new GeoReview.views.MapPanel();
+    views.insertReview = new GeoReview.views.InsertReviewPanel();
 
     Ext.apply(GeoReview.views, views);
 
     var items = new Array();
     items.push(GeoReview.views.map);
+    items.push(GeoReview.views.insertReview);
 
     // Adds to the current panel's items 
     // the just created panels

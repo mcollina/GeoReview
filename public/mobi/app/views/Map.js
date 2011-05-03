@@ -23,8 +23,13 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
       useCurrentLocation: true,
       listeners: {
         afterrender: function() {
-          google.maps.event.addListener(this.map, "click", function(e){
-            console.log(e.latLng);
+          google.maps.event.addListener(this.map, "click", function(e) {
+            Ext.dispatch({ 
+              controller: "MapController", 
+              action: "insert", 
+              latLng: e.latLng,
+              historyUrl: "insert" 
+            });
           })
         }
       }
