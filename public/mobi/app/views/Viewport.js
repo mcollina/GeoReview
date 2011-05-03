@@ -29,15 +29,15 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
 
     // create the main two panels
     var views = new Object();
+    views.map = new GeoReview.views.MapPanel();
     views.about = new GeoReview.views.AboutPanel();
-    //views.map = new GeoReview.views.MapPanel();
 
     // Adds to GeoReview.views the just created 
     // panels
     Ext.apply(GeoReview.views, views);
 
     var items = new Array();
-    //items.push(GeoReview.views.map);
+    items.push(GeoReview.views.map);
     items.push(GeoReview.views.about);
 
     // Adds to the current panel's items 
