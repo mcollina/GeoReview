@@ -15,7 +15,9 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
     {
     xtype: 'toolbar',
     title: 'GeoReview',
-    items: [] // end items
+    items: [
+      new GeoReview.views.BackButton()
+    ] // end items
   }],
 
   // the tab bar at the bottom

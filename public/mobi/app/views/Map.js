@@ -34,5 +34,11 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
         }
       }
     },
-  ]
+  ],
+
+  listeners: {
+    activate: function() {
+      Ext.getCmp("back").clearBackStack();
+    }
+  }
 });

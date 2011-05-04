@@ -99,5 +99,11 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
     (new google.maps.Geocoder()).geocode({ location: latLng }, function(results) { 
       that.getComponent('position').update('Position: ' + results[0].formatted_address);
     });
+  },
+
+  listeners: {
+    beforerender: function() {
+      Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showMap' });
+    }
   }
 });
