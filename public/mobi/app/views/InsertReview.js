@@ -102,7 +102,7 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
   },
 
   listeners: {
-    beforerender: function() {
+    activate: function() {
       Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showMap' });
     }
   }

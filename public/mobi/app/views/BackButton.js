@@ -15,7 +15,13 @@ GeoReview.views.BackButton = Ext.extend(Ext.Button, {
   backStack: [],
 
   addToBackStack: function(dispatchOptions) {
-    this.backStack.push(dispatchOptions);
+    var found = false;
+    this.backStack.forEach(function(el) {
+      found = (Ext.encode(el) == Ext.encode(dispatchOptions));
+    });
+    if (!found) {
+      this.backStack.push(dispatchOptions);
+    }
     this.show();
   },
 

@@ -20,6 +20,9 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
     { 
       // this is the actual Map Object
       xtype: 'map',
+      mapOptions: {
+        zoom: 16
+      },
       useCurrentLocation: true,
       listeners: {
         afterrender: function() {
