@@ -5,6 +5,9 @@ gem 'haml', '>= 3.1.0.alpha.147'
 gem 'compass', '>= 0.11.beta.4'
 gem 'rake-minify'
 gem 'tux'
+gem "bson_ext", "~> 1.3"
+gem 'mongoid', "~> 2.0.1"
+gem 'SystemTimer', "~> 1.2.0"
 
 group :development do
   gem 'shotgun'

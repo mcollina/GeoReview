@@ -6,6 +6,7 @@
   GeoReview.views.Stars = Ext.extend(Ext.Panel, {
 
     id: 'stars',
+    height: 40,
 
     layout: { 
       // all the contained items are layed out 
@@ -78,8 +79,7 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
   },
 
   items: [
-    { id: 'position',
-      xtype: 'panel' },
+    { id: 'position', xtype: 'panel', height: 50 },
     new GeoReview.views.Stars(),
     { xtype: 'textfield', name: 'username', label: 'Name', id: 'username' },
     { xtype: 'textareafield', name: 'comment', label: 'Comment', id: 'comment' },
@@ -99,11 +99,15 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
     (new google.maps.Geocoder()).geocode({ location: latLng }, function(results) { 
       that.getComponent('position').update('Position: ' + results[0].formatted_address);
     });
+    
+    
   },
 
   listeners: {
     activate: function() {
       Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showMap' });
+      
     }
   }
 });
+
