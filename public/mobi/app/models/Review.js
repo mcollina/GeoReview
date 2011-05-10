@@ -12,8 +12,8 @@ GeoReview.models.insertReview = function(values){
 		params: {
 		  "review[name]": values.name,
 			"review[stars]": values.stars,
-   	  "review[comment]": values.comment
-			
+   	  "review[comment]": values.comment,
+   	  "review[location]": values.latLng.lat() + ";" + values.latLng.lng()
 		},
 	  success: function(response,opt) {
 		  var res = Ext.decode(response.responseText);
