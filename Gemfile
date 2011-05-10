@@ -8,6 +8,7 @@ gem 'tux'
 gem "bson_ext", "~> 1.3"
 gem 'mongoid', "~> 2.0.1"
 gem 'SystemTimer', "~> 1.2.0"
+gem 'tux'
 
 group :development do
   gem 'shotgun'

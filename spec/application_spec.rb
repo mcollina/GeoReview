@@ -18,12 +18,14 @@ describe Sinatra::Application do
   
   context "POST /review" do
   
-    def do_request(params = {})
+    let(:review) { double('Review', :new? => false, :errors => {}) }
+  
+    def do_request(params = { :review => { :name => 'Tod', :stars => 5, :comment => 'Hi' } })
       post '/review', params
     end
     
     before :each do
-      Review.stub(:create)
+      Review.stub(:create).and_return(review)
     end
     
     it "should be succesful" do
@@ -41,8 +43,21 @@ describe Sinatra::Application do
       JSON.parse(last_response.body)["status"].should == true
     end
     
+    it "should return a json with status false if there are errors" do
+      review.stub(:new?).and_return(true)
+      do_request({})
+      JSON.parse(last_response.body)["status"].should == false
+    end
+    
+    it "should return a json with errors if there are errors" do
+      review.stub(:new?).and_return(true)
+      review.stub_chain(:errors, :to_a).and_return(["hello", "world"])
+      do_request({})
+      JSON.parse(last_response.body)["errors"].should == ["hello", "world"]
+    end
+    
     it "should create a Review" do
-      Review.should_receive(:create).with({ 'lat' => "44.5", 'lng' => "11.6", 'stars' => "3", 'name' => 'Fred', 'comment' => 'Very nice place'})
+      Review.should_receive(:create).with({ 'lat' => "44.5", 'lng' => "11.6", 'stars' => "3", 'name' => 'Fred', 'comment' => 'Very nice place'}).and_return(review)
       do_request :review => { :lat => 44.5, :lng => 11.6, :stars => 3, :name => 'Fred', :comment => 'Very nice place'}
     end
     

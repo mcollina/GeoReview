@@ -14,6 +14,13 @@ Ext.regApplication({
   // application
   launch: function() {
     this.views.viewport = new this.views.Viewport();
+  },
+  resetMsgBox: function() {
+    Ext.Msg = new Ext.MessageBox();
+    Ext.Msg.on({
+      hide: function(component) { component.destroy(); },
+      destroy: function(component) { MavApp.resetMsgBox(); }
+    });
   }
 });
 

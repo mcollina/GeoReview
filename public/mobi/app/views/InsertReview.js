@@ -86,9 +86,7 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
     { xtype: 'button', text: 'Leave a comment', 
       handler: function() {
         var owner = this.ownerCt;
-        console.log(owner.getComponent('stars').value);
-        console.log(owner.getComponent('username').getValue());
-        console.log(owner.getComponent('comment').getValue());
+        GeoReview.models.insertReview( { stars: owner.getComponent('stars').value, name: owner.getComponent('username').getValue(), comment: owner.getComponent('comment').getValue()})
     }}
   ],
 

@@ -20,10 +20,6 @@ Rspec.configure do |config|
   # reset database before each example is run
   
   config.before :all do
-    Mongoid.database.collections.each(&:drop)
-  end
- 
-  config.after :all do
-    Mongoid.database.collections.each(&:drop)
+    Mongoid.database.collections.select { |c| c.name !~ /system/ }.each(&:drop)
   end
 end
