@@ -28,7 +28,7 @@ describe Sinatra::Application do
       Review.stub(:create).and_return(review)
     end
     
-    it "should be succesful" do
+    it "should be successful" do
       do_request
       last_response.should be_ok
     end
@@ -63,4 +63,78 @@ describe Sinatra::Application do
     
   end
   
+  context "GET /reviews" do
+    
+    def do_request(params = {})
+      get '/reviews', params
+    end
+    
+    before :each do
+      Review.stub(:geo_search).and_return([])
+    end
+    
+    it "should be successful" do
+      do_request
+      last_response.should be_ok
+    end
+    
+    it "should return a valid json" do
+      do_request
+      last_response.content_type.should == 'application/json'
+    end
+    
+    it "should return a json with status true" do
+      do_request
+      JSON.parse(last_response.body)["status"].should == true
+    end
+    
+    it "should call Review.geo_search" do
+      Review.should_receive(:geo_search).with('lat' => "44.5", 'lng' => "11.6", 'radius' => "#{1/7.0}").and_return([])
+      do_request(:lat => 44.5, :lng => 11.6, :radius => 1/7.0)
+    end
+    
+    it "should return a json with one location review" do
+      review = double('review') #, :to_json => { :name => 'Tod', :stars => 3, :comment => 'Cool review', 
+#                      'location' => [44.5145, 11.6213] }.to_json )
+      Review.stub(:geo_search).and_return([ review ])
+      do_request
+      JSON.parse(last_response.body)["reviews"].should == [ 
+        { 'lat' => 44.5145, 'lng' => 11.6213, 'total' => 1, 
+          'items' => [ 'name' => 'Tod', 'stars' => 3, 'comment' => 'Cool review' ] 
+        } ]
+    end
+    
+=begin
+    it "should return a json with two location review" do
+      review = double('review', :name => 'Tod', :stars => 3, :comment => 'Cool review', 
+                      'location' => [44.5145, 11.6213] )
+      review2 = double('review', :name => 'Frank', :stars => 2, :comment => 'Funny app', 
+                      'location' => [43.5145, 12.6213] )
+      Review.stub(:geo_search).and_return([ review, review2 ])
+      do_request(:lat => 44.5, :lng => 11.6, :radius => 1/7.0)
+      JSON.parse(last_response.body)["reviews"].should == [ 
+        { 'lat' => 44.5145, 'lng' => 11.6213, 'total' => 1, 
+          'items' => [ 'name' => 'Tod', 'stars' => 3, 'comment' => 'Cool review' ] 
+        }, 
+        { 'lat' => 43.5145, 'lng' => 12.6213, 'total' => 1, 
+          'items' => [ 'name' => 'Frank', 'stars' => 2, 'comment' => 'Funny app' ] 
+        } ]
+    end
+    
+    it "should return a json with one location review and two comments" do
+      review = double('review', :name => 'Tod', :stars => 3, :comment => 'Cool review', 
+                      'location' => [44.5145, 11.6213] )
+      review2 = double('review', :name => 'Frank', :stars => 2, :comment => 'Funny app', 
+                      'location' => [44.5145, 11.6213] )
+      Review.stub(:geo_search).and_return([ review ])
+      do_request(:lat => 44.5, :lng => 11.6, :radius => 1/7.0)
+      JSON.parse(last_response.body)["reviews"].should == [ 
+        { 'lat' => 44.5145, 'lng' => 11.6213, 'total' => 2, 
+          'items' => [ { 'name' => 'Tod', 'stars' => 3, 'comment' => 'Cool review' }, 
+                       { 'name' => 'Frank', 'stars' => 2, 'comment' => 'Funny app'} ] 
+        } ]
+    end
+    
+=end
+  end
 end
