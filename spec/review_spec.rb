@@ -84,9 +84,40 @@ describe Review do
     subject.should be_valid
   end
   
-  it "should parse a formatted location stirng" do
+  it "should parse a formatted location string" do
     subject.location = "11.4055;11.4055764"
     subject.location.should == [11.4055, 11.4055764]
+  end
+
+  context "with a location" do
+    let(:lat) { 44.5 }
+    let(:lng) { 11.5 }
+    let(:radius) { 3 }
+
+    before :each do
+      subject.location = [47.5640828, 11.405576475640828]
+      subject.save!
+    end
+
+    it "should search all reviews near a point with a radius" do
+      review = double("review")
+      Review.should_receive(:where).with(
+        :location.within => { "$center" => [[ lat, lng ], radius] }).
+        and_return([review])
+      Review.geo_search("lat" => lat, "lng" => lng, "radius" => radius)
+    end
+
+    it "should search all reviews near a point with a radius using symbols" do
+      review = double("review")
+      Review.should_receive(:where).with(
+        :location.within => { "$center" => [[ lat, lng ], radius] }).
+        and_return([review])
+      Review.geo_search(:lat => lat, :lng => lng, :radius => radius)
+    end
+
+    it "should return the saved review" do
+      Review.geo_search("lat" => 47.5, "lng" => 11.4, "radius" => 5).to_ary.should == [subject]
+    end
   end
   
   it "should create succesfully" do

@@ -27,4 +27,11 @@ class Review
     value = [$1.to_f, $2.to_f] if value =~ /(\d+.\d+);(\d+.\d+)/
     super(value)
   end
+
+  def self.geo_search(params)
+    lat = params["lat"] || params[:lat]
+    lng = params["lng"] || params[:lng]
+    radius = params["radius"] || params[:radius]
+    self.where(:location.within => { "$center" => [ [ lat, lng ], radius ] })
+  end
 end
