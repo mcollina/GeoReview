@@ -16,12 +16,12 @@ describe Sinatra::Application do
     
   end
   
-  context "POST /review" do
+  context "POST /reviews" do
   
     let(:review) { double('Review', :new? => false, :errors => {}) }
   
     def do_request(params = { :review => { :name => 'Tod', :stars => 5, :comment => 'Hi' } })
-      post '/review', params
+      post '/reviews', params
     end
     
     before :each do

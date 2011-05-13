@@ -21,7 +21,7 @@ get '/' do
   haml :app
 end
 
-post '/review' do
+post '/reviews' do
   content_type :json
   review = Review.create(params["review"])
   return { :status => false, :errors => review.errors.to_a}.to_json if review.new?
