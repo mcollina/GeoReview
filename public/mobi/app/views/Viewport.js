@@ -49,7 +49,7 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
             listeners: { 
                 "hide": function(picker) { 
                     selectedValue = picker.getValue(); 
-                    document.location.href = "/?color="+selectedValue.color+"#"+Ext.History.getToken();
+                    document.location.href = "/?color="+selectedValue.color;
                 } 
             }});
             picker.show();
