@@ -16,7 +16,45 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
     xtype: 'toolbar',
     title: 'GeoReview',
     items: [
-      new GeoReview.views.BackButton()
+      new GeoReview.views.BackButton(), { xtype: 'spacer' }, {
+        xtype: 'button',
+        ui: 'action',
+        text: 'Color',
+        handler: function(){
+            var picker = new Ext.Picker({
+            slots: [
+                {
+                    name : 'color',
+                    title: 'Choose a color',
+                    data : [
+                        {text: 'Blue', value: 'blu'},
+                        {text: 'Red', value: 'red'},
+                        {text: 'Grey', value: 'grey'},
+                        {text: 'Yellow', value: 'yellow'},
+                        {text: 'Green', value: 'green'},
+                    ]
+                }
+            ],
+            /*listeners: {
+                        pick: function(obj, slot){
+                            console.log("choose");
+                            console.log(slot);
+                        }
+                    },
+                    /*hide: function(){
+                        this.hide();
+                        console.log("change");
+                    }*//*
+            });*/
+            listeners: { 
+                "hide": function(picker) { 
+                    selectedValue = picker.getValue(); 
+                    document.location.href = "/?color="+selectedValue.color;
+                } 
+            }});
+            picker.show();
+        }
+      }
     ] // end items
   }],
 

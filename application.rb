@@ -18,12 +18,12 @@ configure do
 end
 
 get '/' do
+  @color = params["color"] || "grey" 
   haml :app
 end
 
 post '/reviews' do
   content_type :json
-  puts params.inspect
   review = Review.create(params["review"])
   return { :status => false, :errors => review.errors.to_a}.to_json if review.new?
   { :status => true }.to_json

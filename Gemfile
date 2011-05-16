@@ -9,6 +9,7 @@ gem "bson_ext", "~> 1.3"
 gem 'mongoid', "~> 2.0.1"
 gem 'SystemTimer', "~> 1.2.0"
 gem 'tux'
+gem 'chunky_png', '>= 1.1.0'
 
 group :development do
   gem 'shotgun'

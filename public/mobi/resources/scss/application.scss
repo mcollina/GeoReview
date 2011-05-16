@@ -1,0 +1,32 @@
+$base-color: green;
+
+// This is just a quick example of how to create a custom Sass-based stylesheets
+
+// Note how we are changing the overall style of buttons
+// and also optimizing our the CSS download by removing unused components
+
+// This must be compiled after it is edited, for more information, see
+// http://www.sass-lang.org
+
+@mixin radial-gradient($color-stops, $center-position: center center, $image: false) {
+  @include background-image($image, radial-gradient($center-position, $color-stops));
+}
+@mixin linear-gradient($color-stops, $start: top, $image: false) {
+  @include background-image($image, linear-gradient($start, $color-stops));
+}
+
+@import 'sencha-touch/default/all';
+
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-picker;
+@include sencha-toolbar-forms;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-carousel;
+@include sencha-indexbar;
+@include sencha-list;
+@include sencha-layout;
+@include sencha-form;
+@include sencha-loading-spinner;
