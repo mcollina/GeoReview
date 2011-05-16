@@ -32,8 +32,7 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
                 Ext.dispatch({ 
                   controller: "MapController", 
                   action: "insert", 
-                  latLng: e.latLng,
-                  historyUrl: "insert" 
+                  latLng: e.latLng
                 });
             }
           })
@@ -82,8 +81,7 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
               controller: "MapController", 
               action: "showList", 
               latLng: this.position,
-              records: this.records,
-              historyUrl: "list" 
+              records: this.records
             });
         });
         
@@ -98,10 +96,12 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
   listeners: {
     activate: function() {
-      Ext.getCmp("back").clearBackStack();
-      GeoReview.callback = this.loadReviews;
-      if (GeoReview.position.lat == undefined) navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);
-      else this.loadReviews();
+      if (!(Ext.History.getToken()=='about')){
+          Ext.getCmp("back").clearBackStack();
+          GeoReview.callback = GeoReview.views.map.loadReviews;
+          if (GeoReview.position.lat == undefined) navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);
+          else GeoReview.views.map.loadReviews();
+      }
     }
   }
 });

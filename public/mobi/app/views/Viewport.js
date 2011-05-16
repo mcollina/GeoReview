@@ -49,7 +49,7 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
             listeners: { 
                 "hide": function(picker) { 
                     selectedValue = picker.getValue(); 
-                    document.location.href = "/?color="+selectedValue.color;
+                    document.location.href = "/?color="+selectedValue.color+"#"+Ext.History.getToken();
                 } 
             }});
             picker.show();
@@ -63,7 +63,8 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
 
   // if we wanted to listen for some events
   // we would put the methods here
-  listeners: { }, 
+  listeners: { 
+  }, 
 
   initComponent: function (){
 

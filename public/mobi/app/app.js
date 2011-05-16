@@ -13,7 +13,7 @@ Ext.regApplication({
   // this function is called by Sencha Touch to startup the
   // application
   launch: function() {
-    this.views.viewport = new this.views.Viewport();
+    GeoReview.views.viewport = new this.views.Viewport();
   },
   position: {},
   callback: null,

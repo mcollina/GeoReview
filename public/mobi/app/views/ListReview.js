@@ -12,12 +12,11 @@ GeoReview.views.ListReview = Ext.extend(Ext.Panel, {
         width: 200,
         text: 'Leave a comment',
         handler: function(){
-            Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showList', latLng: GeoReview.views.listReview.latLng, records: GeoReview.models.listReview.records });
+            Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showList', latLng: GeoReview.views.listReview.latLng, records: GeoReview.models.listReview.records});
             Ext.dispatch({ 
               controller: "MapController", 
               action: "insert", 
-              latLng: GeoReview.views.listReview.latLng,
-              historyUrl: "insert" 
+              latLng: GeoReview.views.listReview.latLng
             });
         }
     }

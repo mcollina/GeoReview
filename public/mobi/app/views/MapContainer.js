@@ -13,6 +13,14 @@ GeoReview.views.MapContainerPanel = Ext.extend(Ext.Panel, {
 
   // default animation for the card switch
   cardSwitchAnimation: 'slide',
+  
+  listeners: {
+    activate: function(){
+
+        if (this.getActiveItem() == GeoReview.views.insertReview) Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showMap' });
+        if (this.getActiveItem() == GeoReview.views.listReview) Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showMap'}); 
+    }
+  },
 
   initComponent: function() {
 
