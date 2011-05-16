@@ -1,4 +1,4 @@
-
+document.fromMarker = false;
 // This creates a GeoReview object in the global namespace
 // that contains the entire application
 Ext.regApplication({
@@ -15,11 +15,18 @@ Ext.regApplication({
   launch: function() {
     this.views.viewport = new this.views.Viewport();
   },
+  position: {},
+  callback: null,
+  getPosition: function(position){
+    GeoReview.position.lat = position.coords.latitude;
+    GeoReview.position.lng = position.coords.longitude;
+    GeoReview.callback();
+  },
   resetMsgBox: function() {
     Ext.Msg = new Ext.MessageBox();
     Ext.Msg.on({
       hide: function(component) { component.destroy(); },
-      destroy: function(component) { MavApp.resetMsgBox(); }
+      destroy: function(component) { GeoReview.resetMsgBox(); }
     });
   }
 });

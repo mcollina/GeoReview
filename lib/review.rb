@@ -29,9 +29,9 @@ class Review
   end
 
   def self.geo_search(params)
-    lat = params["lat"] || params[:lat]
-    lng = params["lng"] || params[:lng]
-    radius = params["radius"] || params[:radius]
+    lat = (params["lat"] || params[:lat]).to_f
+    lng = (params["lng"] || params[:lng]).to_f
+    radius = (params["radius"] || params[:radius]).to_f
     self.where(:location.within => { "$center" => [ [ lat, lng ], radius ] })
   end
 end

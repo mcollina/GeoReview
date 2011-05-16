@@ -86,9 +86,16 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
     { xtype: 'button', text: 'Leave a comment', 
       handler: function() {
         var owner = this.ownerCt;
-        GeoReview.models.insertReview( { stars: owner.getComponent('stars').value, name: owner.getComponent('username').getValue(), comment: owner.getComponent('comment').getValue(), latLng: owner.latLng })
+        GeoReview.models.insertReview( { stars: owner.getComponent('stars').value, name: owner.getComponent('username').getValue(), comment: owner.getComponent('comment').getValue(), latLng: owner.latLng });
     }}
   ],
+  
+  resetForm: function(){
+    this.getComponent('stars').toggleStars(1);
+    this.getComponent('username').reset();
+    this.getComponent('comment').reset();
+  },
+  
   latLng: null,
   updateWithPosition: function(latLng) {
     this.getComponent('position').update('Position: <img src="/mobi/resources/images/loading.gif">');
@@ -97,8 +104,7 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
     (new google.maps.Geocoder()).geocode({ location: latLng }, function(results) { 
       that.getComponent('position').update('Position: ' + results[0].formatted_address);
     });
-    
-    
+
   },
 
   listeners: {

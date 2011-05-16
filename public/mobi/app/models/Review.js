@@ -26,6 +26,7 @@ GeoReview.models.insertReview = function(values){
                         action: 'showMap',
                         historyUrl: 'index'
                     })
+                    GeoReview.views.insertReview.resetForm();
                 }); 
             }else{
                 var err = res.errors.join("<br/>");
@@ -39,3 +40,63 @@ GeoReview.models.insertReview = function(values){
         }
     });
 }
+
+
+GeoReview.models.loadReview = function(pos){
+    Ext.Ajax.request({
+        url: '/reviews',
+        method: 'GET',
+        limitParam: undefined,
+        noCache: true,
+        cacheString: undefined,
+        reader: {
+            type: 'json',
+            root: 'status'
+        },
+        params: {
+            "lat": pos.lat,
+            "lng": pos.lng,
+            "radius": pos.radius
+        },
+        success: function(response, opt){
+            var res = Ext.decode(response.responseText);
+//            console.log(res.reviews);
+            if (res.status) GeoReview.views.map.showReviews(res.reviews);
+            else {
+                // TODO
+            }
+        },
+        failure: function(){
+            // TODO
+        }
+    });
+};
+
+GeoReview.models.Review = Ext.regModel("GeoReview.models.Review", {
+    fields: [
+        {name: "stars", type: "array"},
+        {name: "name", type: "string"},
+        {name: "comment", type: "string"}
+    ]
+});
+
+GeoReview.models.listReview = new Ext.data.Store({
+    autoLoad: false,
+	model: 'GeoReview.models.Review',
+	records: null,
+	load: function(records){
+	    this.records = records;
+	    this.removeAll();
+	    var dataArr=[];
+        var count = 0;
+	    while (count< records.length){
+	        var newEl = new Array();
+	        for (i = 0; i < records[count].stars; i++){
+	            newEl.push(i);
+	        }
+            dataArr.push({ 'name': records[count].name, 'stars': newEl, 'comment': records[count].comment});
+            count ++;
+	    }
+        this.loadData(dataArr);
+	}
+});
