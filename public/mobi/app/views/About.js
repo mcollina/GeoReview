@@ -1,24 +1,32 @@
 
-GeoReview.views.AboutPanel = Ext.extend(Ext.Panel, {
+(function() {
+    var desc = "Mavigex is an academic spin-off of the University of Bologna which focus on:"
+    desc = desc + "<ul><li>Mobile applications</li><li>Digital signage</li><li>VoIP applications</li>"
+    desc = desc + "<li>Mobile broadcasting</li></ul>"
 
-    // The title is shown only in the tab panel
-    title: "About",
+    var georeview = "GeoReview is OSS code released on <a href=\"https://github.com/mcollina/GeoReview\">GitHub</a>"
 
-    // The icon used by the tab panel
-    // 'info' is just a stock icon inside Sencha Touch
-    iconCls: 'info',
+    GeoReview.views.AboutPanel = Ext.extend(Ext.Panel, {
 
-    // inline CSS
-    style: 'text-align: center;',
+        // The title is shown only in the tab panel
+        title: "About",
 
-    // or define a CSS class
-    // cls: 'myclass',
+        // The icon used by the tab panel
+        // 'info' is just a stock icon inside Sencha Touch
+        iconCls: 'info',
 
-    html: '<img src="/mobi/resources/images/mavigex.png" /> <div class="box-about">Mavigex Srl <br /><br />Matteo: .... <br />Daniele: .... </div>',
+        // inline CSS
+        style: 'text-align: center;',
 
-    listeners: {
-        activate: function() {
-            Ext.getCmp("back").clearBackStack();
+        // or define a CSS class
+        // cls: 'myclass',
+
+        html: '<img src="/mobi/resources/images/mavigex.png" /> <div class="box-about">' + desc + '<br />' + georeview + '</div>',
+
+        listeners: {
+            activate: function() {
+                Ext.getCmp("back").clearBackStack();
+            }
         }
-    }
-});
+    });
+})();
