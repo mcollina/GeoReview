@@ -16,7 +16,7 @@ configure do
       conn = Mongo::Connection.from_uri(ENV['MONGOHQ_URL'])
       config.master = conn.db(uri.path.gsub(/^\//, ''))
     else
-      config.master = Mongo::Connectio.new.db("georeview_development")
+      config.master = Mongo::Connection.new.db("georeview_development")
     end
   end
   Mongoid.autocreate_indexes = true
