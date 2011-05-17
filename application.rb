@@ -11,7 +11,13 @@ require ROOT + '/lib/review'
 
 configure do
   Mongoid.configure do |config|
-    config.master = Mongo::Connection.new.db("georeview_development")
+    if ENV['MONGOHQ_URL']
+      uri = URI.parse(ENV['MONGOHQ_URL'])
+      conn = Mongo::Connection.from_uri(ENV['MONGOHQ_URL'])
+      config.master = conn.db(uri.path.gsub(/^\//, ''))
+    else
+      config.master = Mongo::Connectio.new.db("georeview_development")
+    end
   end
   Mongoid.autocreate_indexes = true
   Mongoid.logger = Logger.new($stdout)
