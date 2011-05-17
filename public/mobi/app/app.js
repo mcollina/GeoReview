@@ -15,6 +15,7 @@ Ext.regApplication({
   launch: function() {
     GeoReview.views.viewport = new this.views.Viewport();
   },
+  re: new RegExp("(.+)\\?(.+)"),
   position: {},
   callback: null,
   getPosition: function(position){

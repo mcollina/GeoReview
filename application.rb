@@ -18,7 +18,6 @@ configure do
 end
 
 get '/' do
-  @color = params["color"] || "grey" 
   haml :app
 end
 

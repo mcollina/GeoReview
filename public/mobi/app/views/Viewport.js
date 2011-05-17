@@ -35,21 +35,17 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
                     ]
                 }
             ],
-            /*listeners: {
-                        pick: function(obj, slot){
-                            console.log("choose");
-                            console.log(slot);
-                        }
-                    },
-                    /*hide: function(){
-                        this.hide();
-                        console.log("change");
-                    }*//*
-            });*/
             listeners: { 
                 "hide": function(picker) { 
-                    selectedValue = picker.getValue(); 
-                    document.location.href = "/?color="+selectedValue.color;
+                    selectedValue = picker.getValue();
+                    var headID = document.getElementsByTagName("head")[0];         
+                    var cssNode = document.createElement('link');
+                    cssNode.type = 'text/css';
+                    cssNode.rel = 'stylesheet';
+                    cssNode.href = "mobi/resources/css/"+selectedValue.color+'.css';
+                    cssNode.media = 'screen';
+                    headID.appendChild(cssNode);
+                    localStorage.setItem('color',selectedValue.color);
                 } 
             }});
             picker.show();
