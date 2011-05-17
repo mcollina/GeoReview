@@ -17,6 +17,8 @@
 
         // inline CSS
         style: 'text-align: center;',
+        
+        cls: 'about',
 
         // or define a CSS class
         // cls: 'myclass',

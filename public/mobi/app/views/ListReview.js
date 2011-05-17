@@ -5,9 +5,10 @@ GeoReview.views.ListReview = Ext.extend(Ext.Panel, {
 
     dockedItems: [
         // { dock: 'bottom', html: "Click on the map to leave a review" },
-        { dock: 'bottom', height: 30, style: 'text-align: center;', items: [
+        { dock: 'bottom', style: 'margin: 0px auto;', width: Ext.getBody().getWidth(), height: 30, items: [
             {
         xtype: 'button',
+        ui: 'action',
         height: 20,
         width: 200,
         text: 'Leave a comment',
@@ -23,7 +24,7 @@ GeoReview.views.ListReview = Ext.extend(Ext.Panel, {
     ] },
 
     {
-        id: 'positionList', dock: 'top', height: 50 
+        id: 'positionList', dock: 'top', cls: 'title', height: 50 , width: Ext.getBody().getWidth()
     }
     ],
 

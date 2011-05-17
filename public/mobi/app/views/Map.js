@@ -13,7 +13,7 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
     dockedItems: [
         // { dock: 'bottom', html: "Click on the map to leave a review" },
-        { dock: 'bottom', html: '<img src="/mobi/resources/images/loading.gif">' },
+        { dock: 'bottom', width: Ext.getBody().getWidth(), cls: 'title', style: 'text-align: center !important;', html: '<img src="/mobi/resources/images/loading.gif">' },
     ],
 
     // the objects inside the Panel
@@ -96,12 +96,10 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
     listeners: {
         activate: function() {
-            if (!(Ext.History.getToken()=='about')){
-                Ext.getCmp("back").clearBackStack();
-                GeoReview.callback = GeoReview.views.map.loadReviews;
-                if (GeoReview.position.lat == undefined) navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);
-                else GeoReview.views.map.loadReviews();
-            }
+            Ext.getCmp("back").clearBackStack();
+            GeoReview.callback = GeoReview.views.map.loadReviews;
+            if (GeoReview.position.lat == undefined) navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);
+            else GeoReview.views.map.loadReviews();
         }
     }
 });

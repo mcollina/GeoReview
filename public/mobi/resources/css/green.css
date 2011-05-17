@@ -5058,3 +5058,32 @@ input, textarea {
     -webkit-transform: rotate(330deg);
   }
 }
+
+/* line 35, ../scss/application.scss */
+.x-fullscreen {
+  background-color: #e6ffe6 !important;
+}
+
+/* line 39, ../scss/application.scss */
+.title {
+  color: #004d00;
+  padding: 5px !important;
+  font-weight: bold;
+  font-size: 15px !important;
+}
+
+/* line 46, ../scss/application.scss */
+.box-about {
+  font-weight: bold;
+  background-color: white;
+  font-size: 15px !important;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: #004d00;
+  width: 90%;
+  padding: 5px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}

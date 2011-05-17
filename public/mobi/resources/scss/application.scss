@@ -30,3 +30,30 @@ $base-color: green;
 @include sencha-layout;
 @include sencha-form;
 @include sencha-loading-spinner;
+
+
+.x-fullscreen{
+    background-color: lighten($base-color, 70) !important;
+}
+
+.title{
+    color: darken($base-color, 10);
+    padding: 5px !important;
+    font-weight: bold;
+    font-size: 15px !important;
+}
+
+.box-about{
+    font-weight: bold;
+    background-color: white;
+    font-size: 15px !important;
+    border: 1px solid darken($base-color, 40);;
+    border-radius: 5px;
+    color: darken($base-color, 10);
+    width: 90%;
+    padding: 5px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; 
+}

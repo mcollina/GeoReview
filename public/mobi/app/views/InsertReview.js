@@ -79,11 +79,13 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
     },
 
     items: [
-        { id: 'position', xtype: 'panel', height: 50 },
+        { id: 'position', xtype: 'panel', cls: 'title', height: 50 },
         new GeoReview.views.Stars(),
-        { xtype: 'textfield', name: 'username', label: 'Name', id: 'username' },
-        { xtype: 'textareafield', name: 'comment', label: 'Comment', id: 'comment' },
-        { xtype: 'button', text: 'Leave a comment', 
+        { xtype: 'textfield', name: 'username', width: '90%', label: 'Name', id: 'username', style: 'border: 1px solid black;'},
+        { height: 15 },
+        { xtype: 'textareafield', name: 'comment',  width: '90%', label: 'Comment', id: 'comment', style: 'border: 1px solid black;'},
+        { height: 15 },
+        { xtype: 'button', ui: 'action', text: 'Leave a comment', 
             handler: function() {
                 var owner = this.ownerCt;
                 GeoReview.models.insertReview( { stars: owner.getComponent('stars').value, name: owner.getComponent('username').getValue(), comment: owner.getComponent('comment').getValue(), latLng: owner.latLng });
