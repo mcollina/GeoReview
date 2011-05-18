@@ -5058,3 +5058,38 @@ input, textarea {
     -webkit-transform: rotate(330deg);
   }
 }
+
+/* line 34, ../../scss/application.scss */
+.x-fullscreen {
+  background-color: white !important;
+}
+
+/* line 38, ../../scss/application.scss */
+.title {
+  color: #cc0000;
+  padding: 5px !important;
+  font-weight: bold;
+  font-size: 15px !important;
+}
+
+/* line 45, ../../scss/application.scss */
+.box-about {
+  font-weight: bold;
+  background-color: white;
+  font-size: 15px !important;
+  border: 1px solid #330000;
+  border-radius: 5px;
+  color: #cc0000;
+  width: 90%;
+  padding: 5px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* line 60, ../../scss/application.scss */
+.box-about li {
+  list-style: circle;
+  margin-left: 30px;
+}

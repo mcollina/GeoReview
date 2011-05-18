@@ -5059,12 +5059,12 @@ input, textarea {
   }
 }
 
-/* line 35, ../scss/application.scss */
+/* line 34, ../../scss/application.scss */
 .x-fullscreen {
   background-color: #e6ffe6 !important;
 }
 
-/* line 39, ../scss/application.scss */
+/* line 38, ../../scss/application.scss */
 .title {
   color: #004d00;
   padding: 5px !important;
@@ -5072,7 +5072,7 @@ input, textarea {
   font-size: 15px !important;
 }
 
-/* line 46, ../scss/application.scss */
+/* line 45, ../../scss/application.scss */
 .box-about {
   font-weight: bold;
   background-color: white;
@@ -5086,4 +5086,10 @@ input, textarea {
   margin-left: auto;
   margin-right: auto;
   text-align: left;
+}
+
+/* line 60, ../../scss/application.scss */
+.box-about li {
+  list-style: circle;
+  margin-left: 30px;
 }
