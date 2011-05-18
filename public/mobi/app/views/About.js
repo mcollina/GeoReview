@@ -1,6 +1,6 @@
 
 (function() {
-    var desc = "Mavigex is an academic spin-off of the University of Bologna which focus on:"
+    var desc = "Mavigex is an academic spin-off of the University of Bologna which focuses on:"
     desc = desc + "<ul><li>Mobile applications</li><li>Digital signage</li><li>VoIP applications</li>"
     desc = desc + "<li>Mobile broadcasting</li></ul>"
 
