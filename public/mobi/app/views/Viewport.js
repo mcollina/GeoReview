@@ -29,7 +29,7 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
                         data : [
                             {text: 'Blue', value: 'blu'},
                             {text: 'Red', value: 'red'},
-                            {text: 'Grey', value: 'grey'},
+                            {text: 'Grey', value: 'gray'},
                             {text: 'Yellow', value: 'yellow'},
                             {text: 'Green', value: 'green'},
                         ]
@@ -37,16 +37,8 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
                     ],
                     listeners: { 
                         "hide": function(picker) { 
-                            selectedValue = picker.getValue();
-                            var headID = document.getElementsByTagName("head")[0];         
-                            var cssNode = document.createElement('link');
-                            cssNode.type = 'text/css';
-                            cssNode.rel = 'stylesheet';
-                            cssNode.href = "mobi/resources/css/"+selectedValue.color+'.css';
-                            cssNode.media = 'screen';
-                            headID.appendChild(cssNode);
-                            localStorage.setItem('color',selectedValue.color);
-                        } 
+                            GeoReview.loadCss(picker.getValue().color);
+                        }
                     }});
                     picker.show();
             }

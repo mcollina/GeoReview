@@ -1,7 +1,7 @@
 task :build do
-  ["config.rb", "blu.rb"].each do |file|
+  %w{blue green gray red yellow}.each do |color|
     FileUtils.cd(File.join(File.dirname(__FILE__), "public", "mobi", "resources", "scss")) do
-      sh("compass compile --force -c #{file}")
+      sh("COLOR=#{color} compass compile;")
     end
   end
 end

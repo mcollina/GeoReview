@@ -31,6 +31,21 @@ Ext.regApplication({
             hide: function(component) { component.destroy(); },
             destroy: function(component) { GeoReview.resetMsgBox(); }
         });
+    },
+
+    loadCss: function(color) {
+        if (color == null || color == undefined) {
+            color = localStorage.getItem('color');
+            if (color == null) color = "gray";
+        }
+        var headID = document.getElementsByTagName("head")[0];         
+        var cssNode = document.createElement('link');
+        cssNode.type = 'text/css';
+        cssNode.rel = 'stylesheet';
+        cssNode.href = "mobi/resources/css/"+color+'/application.css';
+        cssNode.media = 'screen';
+        headID.appendChild(cssNode);
+        localStorage.setItem('color',color);
     }
 });
 

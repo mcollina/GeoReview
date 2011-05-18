@@ -1,4 +1,4 @@
-$base-color: green;
+$base-color: color_variable(basecolor);
 
 // This is just a quick example of how to create a custom Sass-based stylesheets
 
@@ -31,7 +31,6 @@ $base-color: green;
 @include sencha-form;
 @include sencha-loading-spinner;
 
-
 .x-fullscreen{
     background-color: lighten($base-color, 70) !important;
 }
@@ -55,5 +54,10 @@ $base-color: green;
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
-    text-align: left; 
+    text-align: left;
+}
+
+.box-about li {
+    list-style: circle;
+    margin-left: 30px;
 }
