@@ -52,6 +52,10 @@ GEM
     gherkin (2.3.7)
       json (>= 1.4.6)
     haml (3.2.0.alpha.2)
+    heroku (2.1.4)
+      launchy (>= 0.3.2)
+      rest-client (~> 1.6.1)
+      term-ansicolor (~> 1.0.5)
     i18n (0.5.0)
     jsmin (1.0.1)
     json (1.5.1)
@@ -75,6 +79,8 @@ GEM
     rake (0.8.7)
     rake-minify (0.2.1)
       jsmin (~> 1.0.1)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
     ripl (0.3.6)
       bond (~> 0.4.0)
     ripl-multi_line (0.3.0)
@@ -131,6 +137,7 @@ DEPENDENCIES
   cucumber
   database_cleaner!
   haml (>= 3.1.0.alpha.147)
+  heroku
   launchy
   mongoid (~> 2.0.1)
   rack-test

@@ -13,6 +13,7 @@ gem 'chunky_png', '>= 1.1.0'
 
 group :development do
   gem 'shotgun'
+  gem 'heroku'
 end
 
 group :test do
