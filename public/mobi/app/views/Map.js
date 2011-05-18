@@ -13,7 +13,7 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
     dockedItems: [
         // { dock: 'bottom', html: "Click on the map to leave a review" },
-        { dock: 'bottom', width: Ext.getBody().getWidth(), cls: 'title', style: 'text-align: center !important;', html: '<img src="'+GeoReview.getUrlImage('loading')+'" />' },
+        { dock: 'bottom', width: '100%', cls: 'title', style: 'text-align: center !important;', html: '<img src="'+GeoReview.getUrlImage('loading')+'" />' },
     ],
 
     // the objects inside the Panel

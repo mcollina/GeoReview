@@ -1,6 +1,6 @@
 GeoReview.models.insertReview = function(values){
     Ext.Ajax.request({
-        url: '/reviews',
+        url: GeoReview.getUrl('reviews'),
         method: 'POST',
         limitParam: undefined,
         noCache: false,
@@ -44,7 +44,7 @@ GeoReview.models.insertReview = function(values){
 
 GeoReview.models.loadReview = function(pos){
     Ext.Ajax.request({
-        url: '/reviews',
+        url: GeoReview.getUrl('reviews'),
         method: 'GET',
         limitParam: undefined,
         noCache: true,

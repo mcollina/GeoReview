@@ -83,6 +83,20 @@ Ext.regApplication({
             default:
                 return '';
         }
+    },
+    
+    getPathBe: function(){
+        if (!phonegap) return '';
+        else return 'http://georeview.mavigex.com';
+    },
+    
+    getUrl: function(type){
+        switch (type){
+            case 'reviews':
+                return this.getPathBe()+"/reviews";
+            default:
+                return '';
+        }
     }
 });
 
