@@ -11,20 +11,25 @@ Ext.regApplication({
 
     // this function is called by Sencha Touch to startup the
     // application
-    realLaunch: function() {   
+    realLaunch: function() {  
         GeoReview.views.viewport = new this.views.Viewport();
     },
     mainLaunch: function(){
-		if (!window.device || !this.launched) { return true; }
+		//if (!this.isPhoneGap() || !this.launched) { return true; }
+		if (!device || !this.launched) {return;}
 		this.realLaunch();
 	},
 	launch: function() {
-		if (!(window.device == undefined)){
+		if (this.isPhoneGap()){
 			this.launched=true;
 			this.mainLaunch();  
 		}else{
 			this.realLaunch();    
 		}
+	},
+	isPhoneGap: function(){
+		if (typeof device == "undefined") return false;
+		else return true;
 	},
     re: new RegExp("(.+)\\?(.+)"),
     position: {},
@@ -54,20 +59,20 @@ Ext.regApplication({
         var cssNode = document.createElement('link');
         cssNode.type = 'text/css';
         cssNode.rel = 'stylesheet';
-        cssNode.href = "mobi/resources/css/"+color+'/application.css';
+        cssNode.href = this.getPath()+"/css/"+color+'/application.css';
         cssNode.media = 'screen';
         headID.appendChild(cssNode);
         localStorage.setItem('color',color);
     },
     
     getPath: function(){
-        if (window.device == undefined) return '/mobi/resources';
-        else return '/resources';
+        if (!phonegap) return '/mobi/resources';
+        else return 'resources';
     },
     
     getUrlImage: function(image){
         switch (image){
-            case 'mavigex':
+            case 'mavigex':		
                 return GeoReview.getPath()+"/images/mavigex.png";
             case 'star':
                 return GeoReview.getPath()+"/images/star.png";
@@ -98,4 +103,3 @@ Ext.gesture.Manager.onMouseEvent = function(e) {
 
     this.onMouseEventOld.apply(this, arguments);
 };
-
