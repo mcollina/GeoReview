@@ -11,9 +11,21 @@ Ext.regApplication({
 
     // this function is called by Sencha Touch to startup the
     // application
-    launch: function() {   
+    realLaunch: function() {   
         GeoReview.views.viewport = new this.views.Viewport();
     },
+    mainLaunch: function(){
+		if (!window.device || !this.launched) { return true; }
+		this.realLaunch();
+	},
+	launch: function() {
+		if (!(window.device == undefined)){
+			this.launched=true;
+			this.mainLaunch();  
+		}else{
+			this.realLaunch();    
+		}
+	},
     re: new RegExp("(.+)\\?(.+)"),
     position: {},
     callback: null,
@@ -49,20 +61,20 @@ Ext.regApplication({
     },
     
     getPath: function(){
-        if (document.phonegap) return '/resources/images';
-        else return '/mobi/resources/images';
+        if (window.device == undefined) return '/mobi/resources';
+        else return '/resources';
     },
     
     getUrlImage: function(image){
         switch (image){
             case 'mavigex':
-                return GeoReview.getPath()+"/mavigex.png";
+                return GeoReview.getPath()+"/images/mavigex.png";
             case 'star':
-                return GeoReview.getPath()+"/star.png";
+                return GeoReview.getPath()+"/images/star.png";
             case 'star_empty':
-                return GeoReview.getPath()+"/star_empty.png";
+                return GeoReview.getPath()+"/images/star_empty.png";
             case 'loading':
-                return GeoReview.getPath()+"/loading.gif";
+                return GeoReview.getPath()+"/images/loading.gif";
             default:
                 return '';
         }
