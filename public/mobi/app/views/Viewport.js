@@ -27,7 +27,7 @@ GeoReview.views.Viewport = Ext.extend(Ext.TabPanel, {
                         name : 'color',
                         title: 'Choose a color',
                         data : [
-                            {text: 'Blue', value: 'blu'},
+                            {text: 'Blue', value: 'blue'},
                             {text: 'Red', value: 'red'},
                             {text: 'Grey', value: 'gray'},
                             {text: 'Yellow', value: 'yellow'},
