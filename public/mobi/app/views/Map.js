@@ -13,7 +13,7 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
     dockedItems: [
         // { dock: 'bottom', html: "Click on the map to leave a review" },
-        { dock: 'bottom', width: Ext.getBody().getWidth(), cls: 'title', style: 'text-align: center !important;', html: '<img src="/mobi/resources/images/loading.gif">' },
+        { dock: 'bottom', width: Ext.getBody().getWidth(), cls: 'title', style: 'text-align: center !important;', html: '<img src="'+GeoReview.getUrlImage('loading')+'" />' },
     ],
 
     // the objects inside the Panel
@@ -42,7 +42,7 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
     ],
 
     loadReviews: function(){
-        GeoReview.views.map.getDockedItems()[0].update('<img src="/mobi/resources/images/loading.gif">');
+        GeoReview.views.map.getDockedItems()[0].update('<img src="'+GeoReview.getUrlImage('loading')+'" />');
         GeoReview.models.loadReview( { 'lat': GeoReview.position.lat, 'lng': GeoReview.position.lng, 'radius': 10 } , this.showReviews);
     },
 

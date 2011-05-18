@@ -11,7 +11,7 @@ Ext.regApplication({
 
     // this function is called by Sencha Touch to startup the
     // application
-    launch: function() {
+    launch: function() {   
         GeoReview.views.viewport = new this.views.Viewport();
     },
     re: new RegExp("(.+)\\?(.+)"),
@@ -46,6 +46,26 @@ Ext.regApplication({
         cssNode.media = 'screen';
         headID.appendChild(cssNode);
         localStorage.setItem('color',color);
+    },
+    
+    getPath: function(){
+        if (document.phonegap) return '/resources/images';
+        else return '/mobi/resources/images';
+    },
+    
+    getUrlImage: function(image){
+        switch (image){
+            case 'mavigex':
+                return GeoReview.getPath()+"/mavigex.png";
+            case 'star':
+                return GeoReview.getPath()+"/star.png";
+            case 'star_empty':
+                return GeoReview.getPath()+"/star_empty.png";
+            case 'loading':
+                return GeoReview.getPath()+"/loading.gif";
+            default:
+                return '';
+        }
     }
 });
 

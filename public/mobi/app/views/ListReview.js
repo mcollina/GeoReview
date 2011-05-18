@@ -35,7 +35,7 @@ GeoReview.views.ListReview = Ext.extend(Ext.Panel, {
 
     latLng: null,
     updateWithPosition: function(latLng) {
-        this.getDockedComponent('positionList').update('Position: <img src="/mobi/resources/images/loading.gif">');
+        this.getDockedComponent('positionList').update('Position: <img src="'+GeoReview.getUrlImage('loading')+'" />');
         this.latLng = latLng;
         var that = this;
         (new google.maps.Geocoder()).geocode({ location: latLng }, function(results) { 
@@ -56,7 +56,7 @@ GeoReview.views.ListReview = Ext.extend(Ext.Panel, {
         store: GeoReview.models.listReview,
         singleSelect: false,
         disableSelection: true,
-        itemTpl: '<div style="text-align: left; padding-left: 5px">{name} <br/> <tpl for="stars"> <img src="mobi/resources/images/star.png" /> </tpl> <br/> {comment} </div>'
+        itemTpl: '<div style="text-align: left; padding-left: 5px">{name} <br/> <tpl for="stars"> <img src="'+GeoReview.getUrlImage('star')+'" /> </tpl> <br/> {comment} </div>'
     }
     ],
 

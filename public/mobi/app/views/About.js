@@ -23,7 +23,7 @@
         // or define a CSS class
         // cls: 'myclass',
 
-        html: '<img src="/mobi/resources/images/mavigex.png" /> <div class="box-about">' + desc + '<br />' + georeview + '</div>',
+        html: '<img src="'+GeoReview.getUrlImage('mavigex')+'" /> <div class="box-about">' + desc + '<br />' + georeview + '</div>',
 
         listeners: {
             activate: function() {

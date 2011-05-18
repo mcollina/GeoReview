@@ -22,7 +22,7 @@ GeoReview.views.MapContainerPanel = Ext.extend(Ext.Panel, {
     },
 
     initComponent: function() {
-
+    
         // create the main two panels
         var views = new Object();
         views.map = new GeoReview.views.MapPanel();

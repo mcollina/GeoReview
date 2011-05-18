@@ -1,7 +1,7 @@
 
 (function () {
-    var star_empty = "<img src='/mobi/resources/images/star_empty.png'>";
-    var star = "<img src='/mobi/resources/images/star.png'>";
+    var star_empty = "<img src='"+GeoReview.getUrlImage('star_empty')+"'>";
+    var star = "<img src='"+GeoReview.getUrlImage('star')+"'>";
 
     GeoReview.views.Stars = Ext.extend(Ext.Panel, {
 
@@ -100,7 +100,7 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
 
     latLng: null,
     updateWithPosition: function(latLng) {
-        this.getComponent('position').update('Position: <img src="/mobi/resources/images/loading.gif">');
+        this.getComponent('position').update('Position: <img src="'+GeoReview.getUrlImage('loading')+'" />');
         this.latLng = latLng;
         var that = this;
         (new google.maps.Geocoder()).geocode({ location: latLng }, function(results) { 
