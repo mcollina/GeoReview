@@ -24,7 +24,7 @@ class Review
   end
   
   def location=(value)
-    value = [$1.to_f, $2.to_f] if value =~ /(\d+.\d+);(\d+.\d+)/
+    value = [$1.to_f, $2.to_f] if value =~ /(-{0,1}\d+.\d+);(-{0,1}\d+.\d+)/
     super(value)
   end
 

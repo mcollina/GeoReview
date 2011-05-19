@@ -89,6 +89,11 @@ describe Review do
     subject.location.should == [11.4055, 11.4055764]
   end
 
+  it "should parse a formatted location string with negative values" do
+    subject.location = "-11.4055;-11.4055764"
+    subject.location.should == [-11.4055, -11.4055764]
+  end
+
   context "with a location" do
     let(:lat) { 44.5 }
     let(:lng) { 11.5 }
