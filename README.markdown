@@ -24,10 +24,10 @@ This application requires a full ruby installation plus bundler, and I
 recommend using [RVM][3] to manage it. 
 To setup the development environment you should:
 
-1. Install bundler `gem install bundler`.
-2. Clone the repository `git clone git://github.com/mcollina/GeoReview.git`.
-3. Install all required dependency `bundle install`.
-4. Run it `rackup`.
+1. Install bundler: `gem install bundler`.
+2. Clone the repository: `git clone git://github.com/mcollina/GeoReview.git`.
+3. Install all required dependencies: `bundle install`.
+4. Run it: `rackup`.
 5. Point your browser to [http://localhost:9292](http://localhost:9292).
 
 [3]: https://rvm.beginrescueend.com/
