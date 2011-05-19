@@ -27,11 +27,13 @@ GeoReview.models.insertReview = function(values){
                         historyUrl: 'index'
                     })
                     GeoReview.views.insertReview.resetForm();
+                    GeoReview.views.insertReview.getComponent('loadingLeave').hide();
                 }); 
             }else{
                 var err = res.errors.join("<br/>");
                 Ext.Msg.alert('Errore', err, function(){
                     GeoReview.resetMsgBox();
+                    GeoReview.views.insertReview.getComponent('loadingLeave').hide();
                 }); 
             }
         },

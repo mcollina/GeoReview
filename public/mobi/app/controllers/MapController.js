@@ -6,6 +6,7 @@ Ext.regController("MapController", {
 
     showMap: function() {
         GeoReview.views.mapContainer.setActiveItem(GeoReview.views.map);
+        GeoReview.views.map.loadReviews();
     },
 
     showList: function(options){

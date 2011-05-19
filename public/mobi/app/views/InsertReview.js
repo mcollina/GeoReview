@@ -88,8 +88,10 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
         { xtype: 'button', ui: 'action', text: 'Leave a comment', 
             handler: function() {
                 var owner = this.ownerCt;
+                owner.getComponent('loadingLeave').show();
                 GeoReview.models.insertReview( { stars: owner.getComponent('stars').value, name: owner.getComponent('username').getValue(), comment: owner.getComponent('comment').getValue(), latLng: owner.latLng });
-            }}
+            }},
+        { html: '<img src="'+GeoReview.getUrlImage('loading')+'" />', id:'loadingLeave', hidden: true }
     ],
 
     resetForm: function(){

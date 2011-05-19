@@ -4,11 +4,13 @@ dir = File.dirname(__FILE__)
 # Load the sencha-touch framework automatically.
 load File.join(dir, '..', '..', 'themes_source')
 
-color = ENV["COLOR"] || "gray"
+color = ENV["COLOR"] || "#666"
+puts color
+name = ENV["NAME"] || "gray"
 
 # Compass configurations
 sass_path = dir
-css_path = File.join(dir, "..", "css", color)
+css_path = File.join(dir, "..", "css", name)
 
 # Require any additional compass plugins here.
 images_dir = File.join(dir, "..", "img")

@@ -31,6 +31,11 @@ $base-color: color_variable(basecolor);
 @include sencha-form;
 @include sencha-loading-spinner;
 
+.x-msgbox-body{
+    margin-top: 47px !important;
+    color: white;
+}
+
 .x-fullscreen{
     background-color: lighten($base-color, 70) !important;
 }

@@ -15,6 +15,11 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
         // { dock: 'bottom', html: "Click on the map to leave a review" },
         { dock: 'bottom', width: '100%', cls: 'title', style: 'text-align: center !important;', html: '<img src="'+GeoReview.getUrlImage('loading')+'" />' },
     ],
+    
+    layout: {
+        type: 'fit'
+    },
+
 
     // the objects inside the Panel
     items: [
@@ -42,22 +47,26 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
     ],
 
     loadReviews: function(){
+        var that = GeoReview.views.map;
+        
+        for (i=0; i < that.markerLoaded.length; i++){
+            that.markerLoaded[i].setMap(null);
+            if (that.markerLoaded[i].label != null) that.markerLoaded[i].label.setMap(null);
+        }
+        
+        that.markerLoaded = [];
         GeoReview.views.map.getDockedItems()[0].update('<img src="'+GeoReview.getUrlImage('loading')+'" />');
-        GeoReview.models.loadReview( { 'lat': GeoReview.position.lat, 'lng': GeoReview.position.lng, 'radius': 10 } , this.showReviews);
+        GeoReview.models.loadReview( { 'lat': GeoReview.position.lat, 'lng': GeoReview.position.lng, 'radius': 10 } , GeoReview.views.map.showReviews);
     },
 
     records: null,
     markerLoaded: [], 
 
     showReviews: function(records){
+    
         var that = GeoReview.views.map;
         that.records = records;
-
-        for (i=0; i < that.markerLoaded.length; i++){
-            that.markerLoaded[i].setMap(null);
-            if (that.markerLoaded[i].label != null) that.markerLoaded[i].label.setMap(null);
-        }
-
+        
         for (i=0; i < records.length; i++){
 
             if (records[i].items.length > 1){
@@ -70,7 +79,8 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
             that.markerLoaded[i] = new google.maps.Marker({
                 map: that.items.getAt(0).map, 
                 position: new google.maps.LatLng(records[i].lat, records[i].lng),
-                records: records[i].items
+                records: records[i].items,
+                icon: GeoReview.getUrlImage('marker')
             });
 
 
@@ -92,14 +102,23 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
         } 
         that.getDockedItems()[0].update("Click on the map to leave a review");
+        
+//        alert("i will do component layout");
+/*        that.doComponentLayout();
+        that.doLayout();*/
     },
 
     listeners: {
         activate: function() {
             Ext.getCmp("back").clearBackStack();
-            GeoReview.callback = GeoReview.views.map.loadReviews;
-            if (GeoReview.position.lat == undefined) navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);
-            else GeoReview.views.map.loadReviews();
+            
+            if (GeoReview.position.lat == undefined) {
+                GeoReview.callback = GeoReview.views.map.loadReviews;
+                navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);
+            }
+            //else GeoReview.views.map.loadReviews();
+            
+            /*navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);*/
         }
     }
 });

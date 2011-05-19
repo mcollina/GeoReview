@@ -5,9 +5,9 @@ Ext.regApplication({
 
     // the application name
     name: "GeoReview",
-    tabletStartupScreen: "/mobi/resources/images/tablet_startup_screen.png",
-    phoneStartupScreen: "/mobi/resources/images/phone_startup_screen.png",
-    icon: "/mobi/resources/images/icon_app.png",
+    tabletStartupScreen: "",
+    phoneStartupScreen: splash_phone,
+    icon: icon,
 
     // this function is called by Sencha Touch to startup the
     // application
@@ -80,6 +80,10 @@ Ext.regApplication({
                 return GeoReview.getPath()+"/images/star_empty.png";
             case 'loading':
                 return GeoReview.getPath()+"/images/loading.gif";
+            case 'icon':
+                return GeoReview.getPath()+"/images/iconapp.png";
+            case 'marker':
+                return GeoReview.getPath()+"/images/marker.png";
             default:
                 return '';
         }
