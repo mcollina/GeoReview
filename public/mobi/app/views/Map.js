@@ -48,6 +48,7 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
     loadReviews: function(){
         var that = GeoReview.views.map;
+        that.disable();
         
         for (i=0; i < that.markerLoaded.length; i++){
             that.markerLoaded[i].setMap(null);
@@ -102,10 +103,7 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
         } 
         that.getDockedItems()[0].update("Click on the map to leave a review");
-        
-//        alert("i will do component layout");
-/*        that.doComponentLayout();
-        that.doLayout();*/
+        that.enable();
     },
 
     listeners: {
