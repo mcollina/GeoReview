@@ -5,7 +5,6 @@ dir = File.dirname(__FILE__)
 load File.join(dir, '..', '..', 'themes_source')
 
 color = ENV["COLOR"] || "#666"
-puts color
 name = ENV["NAME"] || "gray"
 
 # Compass configurations
@@ -14,8 +13,8 @@ css_path = File.join(dir, "..", "css", name)
 
 # Require any additional compass plugins here.
 images_dir = File.join(dir, "..", "img")
-# output_style = :compressed
-# environment = :production
+output_style = :compressed
+environment = :production
 
 module VarAccessor
   Sass::Script::Functions.send :include, self
