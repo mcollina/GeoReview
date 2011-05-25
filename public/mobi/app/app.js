@@ -97,7 +97,7 @@ Ext.regApplication({
     getUrl: function(type){
         switch (type){
             case 'reviews':
-                return this.getPathBe()+"/reviews";
+				return this.getPathBe()+"/reviews";
             default:
                 return '';
         }

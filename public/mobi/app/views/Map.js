@@ -67,15 +67,16 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
     
         var that = GeoReview.views.map;
         that.records = records;
-        
-        for (i=0; i < records.length; i++){
+		for (i=0; i < records.length; i++){
 
-            if (records[i].items.length > 1){
+            /*if (records[i].items.length > 1){
                 var label = new Label({
                     map: that.items.getAt(0).map
                 });
                 label.set('text', records[i].items.length);
-            }
+            }*/
+			
+			//alert(i);
 
             that.markerLoaded[i] = new google.maps.Marker({
                 map: that.items.getAt(0).map, 
@@ -96,10 +97,10 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
                 });
             });
 
-            if (records[i].items.length > 1) {
+            /*if (records[i].items.length > 1) {
                 label.bindTo('position', that.markerLoaded[i], 'position');
                 that.markerLoaded[i].label = label;
-            }
+            }*/
 
         } 
         that.getDockedItems()[0].update("Click on the map to leave a review");
@@ -108,12 +109,13 @@ GeoReview.views.MapPanel = Ext.extend(Ext.Panel, {
 
     listeners: {
         activate: function() {
-            Ext.getCmp("back").clearBackStack();
-            
-            if (GeoReview.position.lat == undefined) {
-                GeoReview.callback = GeoReview.views.map.loadReviews;
-                navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);
-            }
+			if (navigator.onLine){
+				Ext.getCmp("back").clearBackStack();
+					if (GeoReview.position.lat == undefined) {
+                	GeoReview.callback = GeoReview.views.map.loadReviews;
+                	navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);
+            	}
+			}else GeoReview.views.mapContainer.setOffline();
             //else GeoReview.views.map.loadReviews();
             
             /*navigator.geolocation.getCurrentPosition(GeoReview.getPosition, null);*/

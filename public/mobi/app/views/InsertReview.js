@@ -113,8 +113,8 @@ GeoReview.views.InsertReviewPanel = Ext.extend(Ext.Panel, {
 
     listeners: {
         activate: function() {
-            Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showMap' });
-
+			if (navigator.onLine) Ext.getCmp('back').addToBackStack({ controller: 'MapController', action: 'showMap' });
+			else GeoReview.views.mapContainer.setOffline();
         }
     }
 });
